@@ -1,0 +1,335 @@
+<definitions name='EJB3AccountControlBeanService' targetNamespace='http://ejb3.examples.itko.com/' xmlns='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:tns='http://ejb3.examples.itko.com/' xmlns:xsd='http://www.w3.org/2001/XMLSchema'>
+ <types>
+  <xs:schema targetNamespace='http://ejb3.examples.itko.com/' version='1.0' xmlns:tns='http://ejb3.examples.itko.com/' xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+   <xs:element name='addAccount' type='tns:addAccount'/>
+   <xs:element name='addAccountResponse' type='tns:addAccountResponse'/>
+   <xs:element name='deleteAccount' type='tns:deleteAccount'/>
+   <xs:element name='deleteAccountResponse' type='tns:deleteAccountResponse'/>
+   <xs:element name='depositMoney' type='tns:depositMoney'/>
+   <xs:element name='depositMoneyResponse' type='tns:depositMoneyResponse'/>
+   <xs:element name='getAccount' type='tns:getAccount'/>
+   <xs:element name='getAccountResponse' type='tns:getAccountResponse'/>
+   <xs:element name='getTransaction' type='tns:getTransaction'/>
+   <xs:element name='getTransactionResponse' type='tns:getTransactionResponse'/>
+   <xs:element name='getTransactions' type='tns:getTransactions'/>
+   <xs:element name='getTransactionsResponse' type='tns:getTransactionsResponse'/>
+   <xs:element name='listAccounts' type='tns:listAccounts'/>
+   <xs:element name='listAccountsResponse' type='tns:listAccountsResponse'/>
+   <xs:element name='transferMoney' type='tns:transferMoney'/>
+   <xs:element name='transferMoneyResponse' type='tns:transferMoneyResponse'/>
+   <xs:element name='withdrawMoney' type='tns:withdrawMoney'/>
+   <xs:element name='withdrawMoneyResponse' type='tns:withdrawMoneyResponse'/>
+   <xs:complexType name='getTransaction'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='accountId' type='xs:string'/>
+     <xs:element minOccurs='0' name='transId' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getTransactionResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:transaction'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='transaction'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='account' type='tns:account'/>
+     <xs:element minOccurs='0' name='amount' type='xs:decimal'/>
+     <xs:element name='checkNumber' type='xs:int'/>
+     <xs:element minOccurs='0' name='date' type='xs:dateTime'/>
+     <xs:element minOccurs='0' name='description' type='xs:string'/>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='account'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='balance' type='xs:decimal'/>
+     <xs:element minOccurs='0' name='id' type='xs:string'/>
+     <xs:element minOccurs='0' name='name' type='xs:string'/>
+     <xs:element minOccurs='0' name='type' type='tns:accountType'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getTransactions'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='accountId' type='xs:string'/>
+     <xs:element minOccurs='0' name='from' type='xs:dateTime'/>
+     <xs:element minOccurs='0' name='to' type='xs:dateTime'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getTransactionsResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='tns:transaction'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='depositMoney'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='accountId' type='xs:string'/>
+     <xs:element minOccurs='0' name='amount' type='xs:decimal'/>
+     <xs:element minOccurs='0' name='desc' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='depositMoneyResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='transferMoney'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='fromAccountId' type='xs:string'/>
+     <xs:element minOccurs='0' name='toAccountId' type='xs:string'/>
+     <xs:element minOccurs='0' name='amount' type='xs:decimal'/>
+     <xs:element minOccurs='0' name='desc' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='transferMoneyResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='withdrawMoney'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='accountId' type='xs:string'/>
+     <xs:element minOccurs='0' name='amount' type='xs:decimal'/>
+     <xs:element minOccurs='0' name='desc' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='withdrawMoneyResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getAccount'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='accountId' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='getAccountResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='tns:account'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='listAccounts'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='username' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='listAccountsResponse'>
+    <xs:sequence>
+     <xs:element maxOccurs='unbounded' minOccurs='0' name='return' type='tns:account'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='addAccount'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='username' type='xs:string'/>
+     <xs:element minOccurs='0' name='accountObj' type='tns:account'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='addAccountResponse'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='return' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='deleteAccount'>
+    <xs:sequence>
+     <xs:element minOccurs='0' name='username' type='xs:string'/>
+     <xs:element minOccurs='0' name='accountId' type='xs:string'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name='deleteAccountResponse'>
+    <xs:sequence>
+     <xs:element name='return' type='xs:boolean'/>
+    </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name='accountType'>
+    <xs:restriction base='xs:string'>
+     <xs:enumeration value='CHECKING'/>
+     <xs:enumeration value='SAVINGS'/>
+     <xs:enumeration value='CREDIT'/>
+     <xs:enumeration value='AUTO_LOAN'/>
+     <xs:enumeration value='STUDENT_LOAN'/>
+     <xs:enumeration value='MORTGAGE'/>
+    </xs:restriction>
+   </xs:simpleType>
+  </xs:schema>
+ </types>
+ <message name='EJB3AccountControlBean_getTransactionsResponse'>
+  <part element='tns:getTransactionsResponse' name='getTransactionsResponse'></part>
+ </message>
+ <message name='EJB3AccountControlBean_depositMoney'>
+  <part element='tns:depositMoney' name='depositMoney'></part>
+ </message>
+ <message name='EJB3AccountControlBean_transferMoneyResponse'>
+  <part element='tns:transferMoneyResponse' name='transferMoneyResponse'></part>
+ </message>
+ <message name='EJB3AccountControlBean_getAccountResponse'>
+  <part element='tns:getAccountResponse' name='getAccountResponse'></part>
+ </message>
+ <message name='EJB3AccountControlBean_withdrawMoneyResponse'>
+  <part element='tns:withdrawMoneyResponse' name='withdrawMoneyResponse'></part>
+ </message>
+ <message name='EJB3AccountControlBean_addAccountResponse'>
+  <part element='tns:addAccountResponse' name='addAccountResponse'></part>
+ </message>
+ <message name='EJB3AccountControlBean_listAccountsResponse'>
+  <part element='tns:listAccountsResponse' name='listAccountsResponse'></part>
+ </message>
+ <message name='EJB3AccountControlBean_getTransaction'>
+  <part element='tns:getTransaction' name='getTransaction'></part>
+ </message>
+ <message name='EJB3AccountControlBean_getAccount'>
+  <part element='tns:getAccount' name='getAccount'></part>
+ </message>
+ <message name='EJB3AccountControlBean_getTransactions'>
+  <part element='tns:getTransactions' name='getTransactions'></part>
+ </message>
+ <message name='EJB3AccountControlBean_withdrawMoney'>
+  <part element='tns:withdrawMoney' name='withdrawMoney'></part>
+ </message>
+ <message name='EJB3AccountControlBean_addAccount'>
+  <part element='tns:addAccount' name='addAccount'></part>
+ </message>
+ <message name='EJB3AccountControlBean_deleteAccountResponse'>
+  <part element='tns:deleteAccountResponse' name='deleteAccountResponse'></part>
+ </message>
+ <message name='EJB3AccountControlBean_transferMoney'>
+  <part element='tns:transferMoney' name='transferMoney'></part>
+ </message>
+ <message name='EJB3AccountControlBean_depositMoneyResponse'>
+  <part element='tns:depositMoneyResponse' name='depositMoneyResponse'></part>
+ </message>
+ <message name='EJB3AccountControlBean_listAccounts'>
+  <part element='tns:listAccounts' name='listAccounts'></part>
+ </message>
+ <message name='EJB3AccountControlBean_deleteAccount'>
+  <part element='tns:deleteAccount' name='deleteAccount'></part>
+ </message>
+ <message name='EJB3AccountControlBean_getTransactionResponse'>
+  <part element='tns:getTransactionResponse' name='getTransactionResponse'></part>
+ </message>
+ <portType name='EJB3AccountControlBean'>
+  <operation name='addAccount' parameterOrder='addAccount'>
+   <input message='tns:EJB3AccountControlBean_addAccount'></input>
+   <output message='tns:EJB3AccountControlBean_addAccountResponse'></output>
+  </operation>
+  <operation name='deleteAccount' parameterOrder='deleteAccount'>
+   <input message='tns:EJB3AccountControlBean_deleteAccount'></input>
+   <output message='tns:EJB3AccountControlBean_deleteAccountResponse'></output>
+  </operation>
+  <operation name='depositMoney' parameterOrder='depositMoney'>
+   <input message='tns:EJB3AccountControlBean_depositMoney'></input>
+   <output message='tns:EJB3AccountControlBean_depositMoneyResponse'></output>
+  </operation>
+  <operation name='getAccount' parameterOrder='getAccount'>
+   <input message='tns:EJB3AccountControlBean_getAccount'></input>
+   <output message='tns:EJB3AccountControlBean_getAccountResponse'></output>
+  </operation>
+  <operation name='getTransaction' parameterOrder='getTransaction'>
+   <input message='tns:EJB3AccountControlBean_getTransaction'></input>
+   <output message='tns:EJB3AccountControlBean_getTransactionResponse'></output>
+  </operation>
+  <operation name='getTransactions' parameterOrder='getTransactions'>
+   <input message='tns:EJB3AccountControlBean_getTransactions'></input>
+   <output message='tns:EJB3AccountControlBean_getTransactionsResponse'></output>
+  </operation>
+  <operation name='listAccounts' parameterOrder='listAccounts'>
+   <input message='tns:EJB3AccountControlBean_listAccounts'></input>
+   <output message='tns:EJB3AccountControlBean_listAccountsResponse'></output>
+  </operation>
+  <operation name='transferMoney' parameterOrder='transferMoney'>
+   <input message='tns:EJB3AccountControlBean_transferMoney'></input>
+   <output message='tns:EJB3AccountControlBean_transferMoneyResponse'></output>
+  </operation>
+  <operation name='withdrawMoney' parameterOrder='withdrawMoney'>
+   <input message='tns:EJB3AccountControlBean_withdrawMoney'></input>
+   <output message='tns:EJB3AccountControlBean_withdrawMoneyResponse'></output>
+  </operation>
+ </portType>
+ <binding name='EJB3AccountControlBeanBinding' type='tns:EJB3AccountControlBean'>
+  <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+  <operation name='addAccount'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='deleteAccount'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='depositMoney'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getAccount'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getTransaction'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='getTransactions'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='listAccounts'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='transferMoney'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+  <operation name='withdrawMoney'>
+   <soap:operation soapAction=''/>
+   <input>
+    <soap:body use='literal'/>
+   </input>
+   <output>
+    <soap:body use='literal'/>
+   </output>
+  </operation>
+ </binding>
+ <service name='EJB3AccountControlBeanService'>
+  <port binding='tns:EJB3AccountControlBeanBinding' name='EJB3AccountControlBeanPort'>
+   <soap:address location='http://ubuntu:8080/itkoExamples/EJB3AccountControlBean'/>
+  </port>
+ </service>
+</definitions>
